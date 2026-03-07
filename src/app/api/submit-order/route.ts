@@ -260,7 +260,7 @@ export async function POST(
     }
 
     // Validate
-    if (!orderData.fullName?.trim() || orderData.fullName.trim().length < 4) {
+    if (!orderData.fullName?.trim() || orderData.fullName.trim().length < 3) {
       return NextResponse.json(
         { success: false, error: "الاسم الكامل مطلوب" },
         { status: 400 },

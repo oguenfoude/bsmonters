@@ -162,8 +162,7 @@ function validatePhone(raw: string): string | undefined {
 function validateName(raw: string): string | undefined {
   const name = raw.trim();
   if (!name) return "أدخل اسمك الكامل";
-  if (name.length < 4) return "الاسم قصير جداً";
-  if (name.split(/\s+/).length < 2) return "أدخل الاسم واللقب";
+  if (name.length < 3) return "الاسم قصير جداً";
   return undefined;
 }
 
@@ -685,8 +684,12 @@ export default function Page() {
                     <input
                       type="tel"
                       value={formData.phone}
+                      maxLength={10}
                       onChange={(e) => {
-                        setFormData((f) => ({ ...f, phone: e.target.value }));
+                        const val = e.target.value
+                          .replace(/\D/g, "")
+                          .slice(0, 10);
+                        setFormData((f) => ({ ...f, phone: val }));
                         setErrors((p) => ({ ...p, phone: undefined }));
                       }}
                       placeholder="0555123456"
