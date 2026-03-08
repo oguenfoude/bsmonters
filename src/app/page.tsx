@@ -49,6 +49,11 @@ interface WatchItem {
 // ─────────────────────────────────────────────
 const BOX_PRICE = 2000;
 
+const BOX_IMAGES = [
+  { src: "/images/box/box.webp", alt: "طقم الساعة الفاخر — العرض الأول" },
+  { src: "/images/box/box02.webp", alt: "طقم الساعة الفاخر — العرض الثاني" },
+];
+
 const WATCHES: WatchItem[] = [
   { id: "model-1", name: "موديل 1", image: "/images/watches/1.webp" },
   { id: "model-2", name: "موديل 2", image: "/images/watches/2.webp" },
@@ -208,6 +213,16 @@ export default function Page() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [heroIdx, setHeroIdx] = useState(0);
+
+  // Auto-rotate hero images
+  useEffect(() => {
+    const timer = setInterval(
+      () => setHeroIdx((p) => (p + 1) % BOX_IMAGES.length),
+      4000,
+    );
+    return () => clearInterval(timer);
+  }, []);
 
   const selectedWatch = useMemo(
     () => WATCHES.find((w) => w.id === selectedWatchId) || null,
@@ -370,21 +385,32 @@ export default function Page() {
         <div className="absolute inset-0 bg-gradient-to-b from-amber-50/80 via-white to-stone-50" />
         <div className="relative mx-auto max-w-6xl px-4 py-14 md:py-24">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Product Image */}
+            {/* Product Image Carousel */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="relative aspect-square rounded-[2rem] overflow-hidden shadow-2xl shadow-stone-900/10 ring-1 ring-stone-200/50"
             >
-              <Image
-                src="/images/box/box.webp"
-                alt="طقم الساعة الفاخر"
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={heroIdx}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={BOX_IMAGES[heroIdx].src}
+                    alt={BOX_IMAGES[heroIdx].alt}
+                    fill
+                    priority
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </motion.div>
+              </AnimatePresence>
               <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-transparent to-transparent" />
               <div className="absolute top-5 right-5">
                 <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-red-600 text-white text-sm font-bold rounded-full shadow-lg">
@@ -392,15 +418,29 @@ export default function Page() {
                 </span>
               </div>
               <div className="absolute bottom-6 left-6 right-6">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-xs font-medium text-stone-700 shadow-sm">
-                    <Gift className="w-3.5 h-3.5 text-amber-700" />
-                    علبة هدية فاخرة
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-xs font-medium text-stone-700 shadow-sm">
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                    ضمان سنة كاملة
-                  </span>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-xs font-medium text-stone-700 shadow-sm">
+                      <Gift className="w-3.5 h-3.5 text-amber-700" />
+                      علبة هدية فاخرة
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-xs font-medium text-stone-700 shadow-sm">
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                      ضمان سنة كاملة
+                    </span>
+                  </div>
+                  {/* Dot nav */}
+                  <div className="flex items-center gap-1.5">
+                    {BOX_IMAGES.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setHeroIdx(i)}
+                        className={`h-2 rounded-full transition-all duration-300 ${
+                          i === heroIdx ? "bg-white w-5" : "bg-white/40 w-2"
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
