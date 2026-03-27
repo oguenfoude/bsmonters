@@ -61,7 +61,6 @@ const WATCHES: WatchItem[] = [
   { id: "model-4", name: "موديل 4", image: "/images/watches/4.webp" },
   { id: "model-5", name: "موديل 5", image: "/images/watches/5.webp" },
   { id: "model-6", name: "موديل 6", image: "/images/watches/6.webp" },
-  { id: "model-7", name: "موديل 7", image: "/images/watches/7.webp" },
   { id: "model-8", name: "موديل 8", image: "/images/watches/8.webp" },
   { id: "model-9", name: "موديل 9", image: "/images/watches/9.webp" },
   { id: "model-10", name: "موديل 10", image: "/images/watches/10.webp" },
@@ -466,7 +465,7 @@ export default function Page() {
 
               <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-lg">
                 طقم كامل يشمل ساعة أنيقة مع علبة هدية فاخرة وإكسسوارات متنوعة.
-                اختر من 11 موديل حصري واستلم طلبك حتى باب بيتك.
+                اختر من 10 موديلات حصرية واستلم طلبك حتى باب بيتك.
               </p>
 
               {/* Price Card */}
@@ -489,7 +488,7 @@ export default function Page() {
                       <Star className="w-7 h-7 text-amber-100" />
                     </div>
                     <p className="text-[10px] text-stone-400 mt-1.5 font-medium">
-                      11 موديل
+                      10 موديلات
                     </p>
                   </div>
                 </div>
@@ -498,7 +497,7 @@ export default function Page() {
               {/* Trust Signals */}
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { icon: Award, text: "11 موديل حصري" },
+                  { icon: Award, text: "10 موديلات حصرية" },
                   { icon: Gift, text: "علبة هدية فاخرة" },
                   { icon: ShieldCheck, text: "ضمان سنة كاملة" },
                   { icon: Truck, text: "الدفع عند الاستلام" },
