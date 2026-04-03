@@ -52,6 +52,7 @@ const BOX_PRICE = 2000;
 const BOX_IMAGES = [
   { src: "/images/box/box.webp", alt: "طقم الساعة الفاخر — العرض الأول" },
   { src: "/images/box/box02.webp", alt: "طقم الساعة الفاخر — العرض الثاني" },
+  { src: "/images/box/box03.jpg", alt: "طقم الساعة الفاخر — العرض الثالث" },
 ];
 
 const WATCHES: WatchItem[] = [
