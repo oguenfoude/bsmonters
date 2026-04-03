@@ -69,6 +69,15 @@ const WATCHES: WatchItem[] = [
   { id: "model-12", name: "موديل 12", image: "/images/watches/12.webp" },
   { id: "model-13", name: "موديل 13", image: "/images/watches/13.webp" },
   { id: "model-14", name: "موديل 14", image: "/images/watches/14.webp" },
+  { id: "model-15", name: "موديل 15", image: "/images/watches/15.webp" },
+  { id: "model-16", name: "موديل 16", image: "/images/watches/16.webp" },
+  { id: "model-17", name: "موديل 17", image: "/images/watches/17.webp" },
+  { id: "model-18", name: "موديل 18", image: "/images/watches/18.webp" },
+  { id: "model-19", name: "موديل 19", image: "/images/watches/19.webp" },
+  { id: "model-20", name: "موديل 20", image: "/images/watches/20.webp" },
+  { id: "model-21", name: "موديل 21", image: "/images/watches/21.webp" },
+  { id: "model-22", name: "موديل 22", image: "/images/watches/22.webp" },
+  { id: "model-23", name: "موديل 23", image: "/images/watches/23.webp" },
 ];
 
 const DELIVERY_COST: Record<DeliveryOption, number> = {
@@ -469,7 +478,7 @@ export default function Page() {
 
               <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-lg">
                 طقم كامل يشمل ساعة أنيقة مع علبة هدية فاخرة وإكسسوارات متنوعة.
-                اختر من 14 موديلاً حصرياً واستلم طلبك حتى باب بيتك.
+                اختر من 23 موديلاً حصرياً واستلم طلبك حتى باب بيتك.
               </p>
 
               {/* Price Card */}
@@ -492,7 +501,7 @@ export default function Page() {
                       <Star className="w-7 h-7 text-amber-100" />
                     </div>
                     <p className="text-[10px] text-stone-400 mt-1.5 font-medium">
-                      14 موديل
+                      23 موديل
                     </p>
                   </div>
                 </div>
@@ -501,7 +510,7 @@ export default function Page() {
               {/* Trust Signals */}
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { icon: Award, text: "14 موديل حصري" },
+                  { icon: Award, text: "23 موديل حصري" },
                   { icon: Gift, text: "علبة هدية فاخرة" },
                   { icon: ShieldCheck, text: "ضمان سنة كاملة" },
                   { icon: Truck, text: "الدفع عند الاستلام" },
